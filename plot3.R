@@ -8,7 +8,7 @@ data_use$Sub_metering_1 <- as.numeric(data_use$Sub_metering_1) #changge the data
 data_use$Sub_metering_2 <- as.numeric(data_use$Sub_metering_2) #changge the data type to numeric
 data_use$Sub_metering_3 <- as.numeric(data_use$Sub_metering_3) #changge the data type to numeric
 png(file="plot3.png",width = 480, height = 480,)
-with(data_use,plot(Data_Time,Sub_metering_1,ylab="Energy sub metering",xaxt="n"))
+with(data_use,plot(Data_Time,Sub_metering_1,ylab="Energy sub metering",xaxt="n",type="l"))
 with(data_use,lines(Data_Time,Sub_metering_1))
 with(data_use,lines(Data_Time,Sub_metering_2,col="red"))
 with(data_use,lines(Data_Time,Sub_metering_3,col="blue"))
