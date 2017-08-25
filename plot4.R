@@ -8,6 +8,7 @@ data_use$Sub_metering_1 <- as.numeric(data_use$Sub_metering_1) #changge the data
 data_use$Sub_metering_2 <- as.numeric(data_use$Sub_metering_2) #changge the data type to numeric
 data_use$Sub_metering_3 <- as.numeric(data_use$Sub_metering_3) #changge the data type to numeric
 data_use$Voltage<-as.numeric(data_use$Voltage) #change the data type to numeric 
+data_use$Global_reactive_power <- as.numeric(data_use$Global_reactive_power) #change the data type to numeric 
 png(file="plot4.png",width = 480, height = 480,) #create the png file
 par(mfrow=c(2,2)) #will plot 4 pictures
 with(data_use,plot(Data_Time,Global_active_power,ylab="Globel Active Powe (kilowatts)",type="l",xaxt="n")) #plot the first pic
@@ -21,6 +22,9 @@ with(data_use,lines(Data_Time,Sub_metering_1)) #add line
 with(data_use,lines(Data_Time,Sub_metering_2,col="red"))  #add line
 with(data_use,lines(Data_Time,Sub_metering_3,col="blue"))  #add line
 axis(1,c(1,which(data_use$Data_Time=="2007-02-02 00:00:00"),length(data_use$Data_Time)),c("Thu","Fri","Sat")) #add x-axis
-legend("topright",lty =1,,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3")) #add lengend
-
+legend("topright",lty =1,,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),bty="n",cex=0.7) #add lengend
+with(data_use,plot(Data_Time,Global_reactive_power,ylab="Global_reactive_power",xlab="Datatime",xaxt="n",yaxt="n",type="l")) #plot the last pic
+with(data_use,lines(Data_Time,Global_reactive_power))  #add line
+axis(1,c(1,which(data_use$Data_Time=="2007-02-02 00:00:00"),length(data_use$Data_Time)),c("Thu","Fri","Sat")) #add x-axis
+axis(2,c(0,0.1,0.2,0.3,0.4,0.5),c("0.0","0.1","0.2","0.3","0.4","0.5")) #add y-axis
 dev.off()
